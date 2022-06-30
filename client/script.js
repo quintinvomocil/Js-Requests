@@ -89,8 +89,11 @@ const ohMy = () => {
    return axios.get('http://localhost:3000/animals')
    .then(res => {
     for (let i = 0; i < res.data.length; i++) {
-        console.log(res.data[i]);
-   }
+        let newP = document.createElement('p')
+        newP.textContent = res.data[i]
+        document.querySelector('body').appendChild(newP)
+    }
+})
    .catch(err => {
     console.log(err)
    })
@@ -123,6 +126,7 @@ const repeatMyParam = () => {
     })
     let repeatText = document.getElementById('repeat-text')
     repeatText.textContent = res.data
+    repeatText.style.display = 'block'
     
 }
 
@@ -152,7 +156,7 @@ document.getElementById('repeat-button').addEventListener('click', repeatMyParam
 // CODE HERE
 
 const queryBtn = () => {
-    return axios.get('http://localhost:3000/query-test?name=Q')
+    return axios.get('http://localhost:3000/query-test?=Q')
     .then(res => {
         console.log(res.data)
     })
